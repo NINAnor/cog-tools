@@ -15,8 +15,8 @@ def cli():
 @click.argument('source')
 def grayscale(source, colormap='viridis'):
     source_path = pathlib.Path(source)
-    rgba_path = source_path.parent / (source_path.name + '.rgb.tif')
-    cog_path = source_path.parent / (source_path.name + '.cog.tif')
+    rgba_path = source_path.parent / (source_path.stem + '.tiff.rgba')
+    cog_path = source_path.parent / (source_path.stem + '.tiff.cog')
 
     src = rasterio.open(source)
 
