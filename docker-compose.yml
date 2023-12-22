@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  jupyter:
+    build:
+      target: dev
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    ports:
+      - 8888:8888
+    profiles:
+      - dev
+
+  cli:
+    profiles:
+      - prod
+    build:
+      target: prod
+    volumes:
+      - ./data:/app/data
+
