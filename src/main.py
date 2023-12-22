@@ -54,6 +54,9 @@ def grayscale(source, colormap='viridis'):
     # Translate and create the COG
     gdal.Translate(str(cog_path), src_ds, format='COG', creationOptions=options)
 
+    src.close()
+    rgba_path.unlink()
+
 
 if __name__ == '__main__':
     cli()
