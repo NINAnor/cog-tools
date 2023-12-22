@@ -51,6 +51,14 @@ def grayscale(source, colormap='viridis'):
         'ADD_ALPHA=NO',
     ]
 
+
+    # Set GDAL_NUM_THREADS to use all available CPUs
+    gdal.SetConfigOption('GDAL_NUM_THREADS', 'ALL_CPUS')
+    try:
+        gdal.SetConfigOption('GDAL_CACHEMAX', '1024')
+    except:
+        pass
+
     # Translate and create the COG
     gdal.Translate(str(cog_path), src_ds, format='COG', creationOptions=options)
 
